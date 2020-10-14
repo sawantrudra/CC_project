@@ -8,6 +8,9 @@ services:
       - "443:443"
     volumes:
       - ./php/www:/var/www/html
+    links:
+      - db
+
   db:
     image: mysql:5.7
     volumes:
