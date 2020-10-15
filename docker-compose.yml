@@ -6,7 +6,9 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./CI:/app
+      - ./php:/app
+    environment:
+      - CODEIGNITER_PROJECT_NAME: 'CI'
     depends_on:
       - db
 
