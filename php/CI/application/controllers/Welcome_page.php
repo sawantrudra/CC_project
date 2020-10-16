@@ -154,9 +154,12 @@ class Welcome_page extends CI_Controller
 
         $config = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'mailhub.eait.uq.edu.au',
-            'smtp_port' => 25,
-             'mailtype' => 'html',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 587,
+            'mailtype' => 'html',
+            'smtp_auth' => 'true',
+            'smtp_user' => 'vidu_admin_team@viduplayer.com',
+            'smtp_pass' => 'bspbzqcxnshqednb',
             'charset' => 'iso-8859-1',
             'wordwrap' => TRUE
         );
@@ -167,7 +170,7 @@ class Welcome_page extends CI_Controller
         $this->email->from('vidu_admin_team@viduplayer.com', "Admin Team");
         $this->email->to($email);
         $this->email->subject("Email Verification");
-        $this->email->message("Dear User,\n\nPlease click on below URL or paste into your browser to verify your Email Address\n\n https://infs3202-1806ecce.uqcloud.net/CI/verify/" . $verification_code . "\n" . "\n\nThanks\nAdmin Team");
+        $this->email->message("Dear User,\n\nPlease click on below URL or paste into your browser to verify your Email Address\n\n ".BASEPATH."/verify//" . $verification_code . "\n" . "\n\nThanks\nAdmin Team");
         $this->email->send();
     }
 
@@ -215,9 +218,12 @@ class Welcome_page extends CI_Controller
         $verification_code = $this->login_db->get_verification_code( $email);
         $config = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'mailhub.eait.uq.edu.au',
-            'smtp_port' => 25,
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 587,
             'mailtype' => 'html',
+            'smtp_auth' => 'true',
+            'smtp_user' => 'vidu_admin_team@viduplayer.com',
+            'smtp_pass' => 'bspbzqcxnshqednb',
             'charset' => 'iso-8859-1',
             'wordwrap' => TRUE
         );
@@ -228,7 +234,7 @@ class Welcome_page extends CI_Controller
         $this->email->from('viduvideoplayer@gmail.com', "Admin Team");
         $this->email->to($email);
         $this->email->subject("Reset Password");
-        $this->email->message("Dear User,\n\nPlease click on below URL or paste into your browser to reset your password\n\n https://infs3202-1806ecce.uqcloud.net/CI/reset_password/" . $verification_code . "\n" . "\n\nThanks\nAdmin Team");
+        $this->email->message("Dear User,\n\nPlease click on below URL or paste into your browser to reset your password\n\n ".BASEPATH."/reset_password//" . $verification_code . "\n" . "\n\nThanks\nAdmin Team");
         $this->email->send();
     }
 
